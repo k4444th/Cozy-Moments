@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://xekont1h321d"]
+[gd_scene load_steps=3 format=3 uid="uid://xekont1h321d"]
 
+[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstation.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="1_o5qli"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
+
+[node name="Workstation" parent="." instance=ExtResource("1_0wfyh")]
+position = Vector2(350, 0)
 
 [node name="Animal" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(-350, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
