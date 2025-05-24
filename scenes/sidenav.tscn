@@ -8,17 +8,19 @@
 layer = 100
 script = ExtResource("1_7wmdc")
 
-[node name="Sidenav" type="ColorRect" parent="."]
-anchors_preset = 9
+[node name="Everything" type="Node2D" parent="."]
+
+[node name="Sidenav" type="ColorRect" parent="Everything"]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 250.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 color = Color(0.992157, 0.945098, 0.870588, 1)
 
-[node name="CalendarButton" type="TextureButton" parent="Sidenav"]
-layout_mode = 0
+[node name="CalendarButton" type="TextureButton" parent="Everything"]
 offset_left = 25.0
 offset_top = 25.0
 offset_right = 281.0
@@ -26,7 +28,7 @@ offset_bottom = 281.0
 scale = Vector2(0.78, 0.78)
 texture_normal = ExtResource("2_71yj4")
 
-[node name="ArrowButton" type="TextureButton" parent="."]
+[node name="ArrowButton" type="TextureButton" parent="Everything"]
 offset_left = 265.0
 offset_top = 15.0
 offset_right = 1290.0
@@ -35,5 +37,5 @@ scale = Vector2(0.05, 0.05)
 texture_normal = ExtResource("1_64cow")
 stretch_mode = 0
 
-[connection signal="pressed" from="Sidenav/CalendarButton" to="." method="_on_calendar_button_pressed"]
-[connection signal="pressed" from="ArrowButton" to="." method="_on_arrow_button_pressed"]
+[connection signal="pressed" from="Everything/CalendarButton" to="." method="_on_calendar_button_pressed"]
+[connection signal="pressed" from="Everything/ArrowButton" to="." method="_on_arrow_button_pressed"]
