@@ -1,17 +1,21 @@
 extends CanvasLayer
 
+var sidenavOpen := false
 var buttonMargin := 15.0
 var sidenavWidth := 250.0
-var sidenavOpen := false
+var sidenavContentWidth := 200
 var openSidenavSpeed := 0.35
 
-@onready var camera = $"../Camera2D"
 @onready var sidenav = $Sidenav
+@onready var camera = $"../Camera2D"
 @onready var arrowButton = $ArrowButton
+@onready var calendar = $Sidenav/CalendarButton
 
 func _ready() -> void:
 	sidenav.size.x = sidenavWidth
 	arrowButton.position = Vector2(sidenavWidth + buttonMargin, buttonMargin)
+	calendar.scale = Vector2(sidenavContentWidth / 256.0, sidenavContentWidth / 256.0)
+	calendar.position = Vector2((sidenavWidth - sidenavContentWidth) / 2, (sidenavWidth - sidenavContentWidth) / 2)
 	
 	arrowButton.flip_h = !sidenavOpen
 	
@@ -40,3 +44,6 @@ func _on_arrow_button_pressed() -> void:
 		cameraTween.tween_property(camera, "position:x", 0.0, openSidenavSpeed)
 		buttonTween.tween_property(arrowButton, "position:x", buttonMargin, openSidenavSpeed)
 		sidenavTween.tween_property(sidenav, "position:x", -sidenavWidth, openSidenavSpeed)
+
+func _on_calendar_button_pressed() -> void:
+	print("Next Round")
