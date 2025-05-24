@@ -8,7 +8,10 @@ var overlapCoords: Vector2
 func _input(event):
 	if event is InputEventMouseButton:
 		if mouseOver and event.button_index == MOUSE_BUTTON_LEFT:
-			dragging = !dragging	
+			if event.is_pressed():
+				dragging = true	
+			else:
+				dragging = false
 	
 	if event is InputEventMouseMotion and dragging:
 		global_position += event.relative
