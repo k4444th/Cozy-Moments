@@ -12,4 +12,10 @@ config_version=5
 
 config/name="CozyMoments"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.992157, 0.945098, 0.870588, 1)
+boot_splash/image="uid://cb3bmjrjn8edy"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
