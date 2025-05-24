@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://xekont1h321d"]
+
+[ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="1_o5qli"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Animal" parent="." instance=ExtResource("1_o5qli")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
