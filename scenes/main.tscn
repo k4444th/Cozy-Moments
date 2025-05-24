@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://xekont1h321d"]
+[gd_scene load_steps=5 format=3 uid="uid://xekont1h321d"]
 
 [ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstation.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dw5mmhbqsshlo" path="res://scenes/background.tscn" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dsogyisvl8hag" path="res://scenes/sidenav.tscn" id="3_sugp2"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_jyhfs")]
 
 [node name="Workstation1" parent="." instance=ExtResource("1_0wfyh")]
 position = Vector2(-350, 0)
@@ -16,5 +20,7 @@ position = Vector2(0, -150)
 
 [node name="Animal2" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(0, 150)
+
+[node name="Sidenav" parent="." instance=ExtResource("3_sugp2")]
 
 [node name="Camera2D" type="Camera2D" parent="."]

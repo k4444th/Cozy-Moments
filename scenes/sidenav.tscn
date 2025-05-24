@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsogyisvl8hag"]
+
+[ext_resource type="Script" uid="uid://d04nm7q0hljl" path="res://scripts/sidenav.gd" id="1_7wmdc"]
+[ext_resource type="Texture2D" uid="uid://o215gxyvqvib" path="res://assets/mock/general/arrowLeft.png" id="1_64cow"]
+
+[node name="Sidenav" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_7wmdc")
+
+[node name="Sidenav" type="ColorRect" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 250.0
+grow_vertical = 2
+size_flags_horizontal = 0
+color = Color(0.992157, 0.945098, 0.870588, 1)
+
+[node name="ArrowButton" type="TextureButton" parent="."]
+offset_left = 265.0
+offset_top = 15.0
+offset_right = 1290.0
+offset_bottom = 1039.0
+scale = Vector2(0.05, 0.05)
+texture_normal = ExtResource("1_64cow")
+stretch_mode = 0
+
+[connection signal="pressed" from="ArrowButton" to="." method="_on_arrow_button_pressed"]
