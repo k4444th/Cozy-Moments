@@ -17,6 +17,8 @@ boot_splash/image="uid://cb3bmjrjn8edy"
 
 [display]
 
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/bg_color=Color(0.14, 0.14, 0.14, 1)
 window/image=""
 window/show_image=true

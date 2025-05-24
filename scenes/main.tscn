@@ -5,10 +5,16 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Workstation" parent="." instance=ExtResource("1_0wfyh")]
+[node name="Workstation1" parent="." instance=ExtResource("1_0wfyh")]
+position = Vector2(-350, 0)
+
+[node name="Workstation2" parent="." instance=ExtResource("1_0wfyh")]
 position = Vector2(350, 0)
 
-[node name="Animal" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(-350, 0)
+[node name="Animal1" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(0, -150)
+
+[node name="Animal2" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(0, 150)
 
 [node name="Camera2D" type="Camera2D" parent="."]
