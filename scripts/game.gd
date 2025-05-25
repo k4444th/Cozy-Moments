@@ -18,7 +18,6 @@ func _ready() -> void:
 	showAnimals()
 
 func showAnimals():
-	print("hello")
 	for animal in Gamemanager.currentRound["availableAnimals"]:
 		var animalNode = animalScenes[Gamemanager.animalList.find(animal.name)].instantiate()
 		animalContainer.add_child(animalNode)

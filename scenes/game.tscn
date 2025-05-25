@@ -19,22 +19,22 @@ script = ExtResource("1_0tnpc")
 [node name="Workstation" type="Node2D" parent="."]
 
 [node name="Berryforest" parent="Workstation" instance=ExtResource("4_0tnpc")]
-position = Vector2(-350, -150)
+position = Vector2(-350, 0)
 
 [node name="Pond" parent="Workstation" instance=ExtResource("5_vtaks")]
-position = Vector2(0, -150)
+position = Vector2(-150, -200)
 
 [node name="Stage" parent="Workstation" instance=ExtResource("6_kvpfn")]
-position = Vector2(-350, 150)
+position = Vector2(-150, 200)
 
 [node name="Teahouse" parent="Workstation" instance=ExtResource("7_dinhu")]
-position = Vector2(350, -150)
+position = Vector2(150, -200)
 
 [node name="Wood" parent="Workstation" instance=ExtResource("8_kvuet")]
-position = Vector2(0, 150)
+position = Vector2(150, 200)
 
 [node name="Workbench" parent="Workstation" instance=ExtResource("2_iywne")]
-position = Vector2(350, 150)
+position = Vector2(350, 0)
 
 [node name="Animals" type="Node2D" parent="."]
 
