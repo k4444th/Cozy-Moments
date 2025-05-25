@@ -40,7 +40,6 @@ func initPositions():
 		everything.position.x = -sidenavWidth
 
 func initRessources():
-	print(Gamemanager.ressources)
 	for ressource in Gamemanager.ressources:
 		if Gamemanager.currentRound[ressource] > 0:
 			addRessourceToGUI(ressource, availableRessources)
@@ -53,8 +52,7 @@ func addRessourceToGUI(ressource: String, index: int):
 	get_node("/root/Game/Sidenav/Everything/Ressources").add_child(ressourceNode)
 
 func resize():
-	sidenav.size = Vector2(sidenavWidth, get_viewport().get_visible_rect().size.y)
-	ressources.position = Vector2(sidenavWidth + buttonMargin, get_viewport().get_visible_rect().size.y - 64 - buttonMargin)
+	initSizes()
 	
 func _on_arrow_button_pressed() -> void:
 	sidenavOpen = !sidenavOpen

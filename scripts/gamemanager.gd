@@ -12,6 +12,7 @@ var currentRound := {
 }
 
 func _ready() -> void:
+	resetGame()
 	loadGame()
 
 func saveGame():
