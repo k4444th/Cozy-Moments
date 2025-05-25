@@ -24,9 +24,6 @@ var currentRound := {
 func _ready() -> void:
 	resetGame()
 	loadGame()
-	var animalNode = animalScene.instantiate()
-	animalNode.connect("snapped_animal_position", Callable(self, "distributeAnimals"))
-	add_child(animalNode	)
 
 func saveGame():
 	var data = {
@@ -61,8 +58,11 @@ func resetGame():
 	currentRound["wood"] = 0
 	currentRound["tea"] = 0
 	currentRound["availableAnimals"] = []
-	spawnNewAnimals()
 	saveGame()
+
+func startGame():
+	resetGame()
+	spawnNewAnimals()
 
 func nextRound():
 	currentRound["round"] += 1
@@ -71,14 +71,10 @@ func nextRound():
 	emit_signal("round_started")
 
 func spawnNewAnimals():
-	for newAnimal in range(newAnimalsPerRound):
+	for newAnimalIndex in range(newAnimalsPerRound):
 		currentRound["availableAnimals"].append({
 			"name": animalList[randi_range(0, len(animalList) - 1)],
 			"state": "new",
-			"position": Vector2(0.0, 0.0)
+			"index": len(currentRound["availableAnimals"]),
+			"position": Vector2(animalDistributionLength * sin(deg_to_rad(newAnimalIndex * 360.0 / newAnimalsPerRound)), animalDistributionLength * cos(deg_to_rad(newAnimalIndex * 360.0 / newAnimalsPerRound)))
 		})
-	distributeAnimals()
-
-func distributeAnimals():
-	var animals = get_node("/root/Game/Animals").get_children()
-	print("[ToDo] distributeAnimals()")

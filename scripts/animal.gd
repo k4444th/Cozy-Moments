@@ -7,6 +7,12 @@ var dragging := false
 var overlap := false
 var overlapCoords: Vector2
 
+@export var state: String
+@export var animalIndex: int
+
+func _ready() -> void:
+	pass	
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if mouseOver and event.button_index == MOUSE_BUTTON_LEFT:
@@ -16,10 +22,12 @@ func _input(event):
 				dragging = false
 				if overlap:
 					global_position = overlapCoords
+					Gamemanager.currentRound["availableAnimals"][animalIndex].position = global_position
 				emit_signal("snapped_animal_position")
 	
 	if event is InputEventMouseMotion and dragging:
 		global_position += event.relative
+		Gamemanager.currentRound["availableAnimals"][animalIndex].position = global_position
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "Workstation":

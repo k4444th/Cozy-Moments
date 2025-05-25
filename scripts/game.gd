@@ -1,7 +1,5 @@
 extends Node2D
 
-signal snapped_animal_position()
-
 @onready var animalContainer = $Animals
 
 @onready var animalScenes := [
@@ -17,10 +15,13 @@ signal snapped_animal_position()
 
 func _ready() -> void:
 	Gamemanager.connect("round_started", Callable(self, "showAnimals"))
+	Gamemanager.startGame()
 	showAnimals()
 
 func showAnimals():
 	for animal in Gamemanager.currentRound["availableAnimals"]:
 		var animalNode = animalScenes[Gamemanager.animalList.find(animal.name)].instantiate()
+		animalNode.position = animal.position
+		animalNode.state = animal.state
+		animalNode.animalIndex = animal.index
 		animalContainer.add_child(animalNode)
-	emit_signal("snapped_animal_position")
