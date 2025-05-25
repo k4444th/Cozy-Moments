@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://uxbb6p5tunh"]
+[gd_scene load_steps=3 format=3 uid="uid://uxbb6p5tunh"]
 
 [ext_resource type="Script" uid="uid://wwvd5h8sfv46" path="res://scripts/animal.gd" id="1_rsu6n"]
-[ext_resource type="Texture2D" uid="uid://b0h4d543iasrp" path="res://assets/mock/animals/animal.png" id="2_8dtbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8dtbx"]
 radius = 128.062
@@ -11,7 +10,6 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_rsu6n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8dtbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8dtbx")

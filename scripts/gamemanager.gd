@@ -8,7 +8,9 @@ const animalList := ["Bear", "Bird", "Fox", "Frog", "Hedgehog", "Mouse", "Rabbit
 const workstationList := ["Berryforest", "Pond", "Stage", "Teahouse", "Wood", "Workbench"]
 const newAnimalsPerRound := 3
 
-@onready var game = $"."
+var animalDistributionLength = 50
+
+@onready var animalScene := preload("res://scenes/animal.tscn")
 
 var currentRound := {
 	"round": 0,
@@ -22,6 +24,9 @@ var currentRound := {
 func _ready() -> void:
 	resetGame()
 	loadGame()
+	var animalNode = animalScene.instantiate()
+	animalNode.connect("snapped_animal_position", Callable(self, "distributeAnimals"))
+	add_child(animalNode	)
 
 func saveGame():
 	var data = {
@@ -72,3 +77,28 @@ func spawnNewAnimals():
 			"state": "new",
 			"position": Vector2(0.0, 0.0)
 		})
+
+func distributeAnimals(callerPos):
+	var animals = get_node("/root/Game/Animals").get_children()
+	var positions = []
+	var duplicates = []
+	
+	for animal in animals:
+		positions.append(animal.global_position)
+	
+	for pos in positions:
+		var amount = positions.count(pos)
+		if amount > 1:
+			var positionToAdd = {
+				"position": pos,
+				"amount": amount
+			}
+			if not duplicates.has(positionToAdd):
+				duplicates.append(positionToAdd)
+	
+	for index in range(animals.size()):
+		var animal = animals[index]
+		for pos in duplicates:
+			if animal.global_position == pos.position:
+				animal.global_position = Vector2(animal.global_position.x + animalDistributionLength * sin (deg_to_rad(index * 360.0 / pos.amount)), animal.global_position.y + animalDistributionLength * cos (deg_to_rad(index * 360.0 / pos.amount)))
+				print(animal.global_position)

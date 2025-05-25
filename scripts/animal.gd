@@ -1,5 +1,7 @@
 extends Area2D
 
+signal snapped_animal_position(position)
+
 var mouseOver := false
 var dragging := false
 var overlap := false
@@ -12,13 +14,12 @@ func _input(event):
 				dragging = true	
 			else:
 				dragging = false
+				if overlap:
+					global_position = overlapCoords
+					emit_signal("snapped_animal_position", global_position)
 	
 	if event is InputEventMouseMotion and dragging:
 		global_position += event.relative
-
-func _process(_delta: float) -> void:
-	if overlap and !dragging:
-		global_position = overlapCoords
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "Workstation":
@@ -26,7 +27,7 @@ func _on_area_entered(area: Area2D) -> void:
 		overlapCoords = area.global_position
 
 func _on_area_exited(area: Area2D) -> void:
-	if area.name.contains("Workstation"):
+	if area.get_parent().name == "Workstation":
 		overlap = false
 
 func _on_mouse_entered() -> void:

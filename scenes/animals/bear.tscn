@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://v5vrocmt4h1c" path="res://assets/mock/animals/bear.png" id="2_52iks"]
 
 [node name="Animal" instance=ExtResource("1_g3v3q")]
+scale = Vector2(0.35, 0.35)
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_52iks")
