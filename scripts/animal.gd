@@ -1,6 +1,6 @@
 extends Area2D
 
-signal snapped_animal_position(position)
+signal snapped_animal_position()
 
 var mouseOver := false
 var dragging := false
@@ -16,7 +16,7 @@ func _input(event):
 				dragging = false
 				if overlap:
 					global_position = overlapCoords
-					emit_signal("snapped_animal_position", global_position)
+				emit_signal("snapped_animal_position")
 	
 	if event is InputEventMouseMotion and dragging:
 		global_position += event.relative
