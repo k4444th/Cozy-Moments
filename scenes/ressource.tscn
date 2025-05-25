@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmplb6r5448bx"]
+
+[ext_resource type="Texture2D" uid="uid://vcvfdawe133s" path="res://assets/mock/general/ressources.png" id="1_rnde1"]
+
+[node name="Ressource" type="Node2D"]
+
+[node name="Image" type="TextureRect" parent="."]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_rnde1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 75.0
+offset_right = 139.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.988235, 0.945098, 0.870588, 1)
+theme_override_font_sizes/font_size = 28
+text = "0"
+vertical_alignment = 1

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://xekont1h321d"]
+
+[ext_resource type="PackedScene" uid="uid://dw5mmhbqsshlo" path="res://scenes/background.tscn" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstation.tscn" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dsogyisvl8hag" path="res://scenes/sidenav.tscn" id="4_u5sy4"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(-2, 0)
+
+[node name="Background" parent="." instance=ExtResource("1_lbhrr")]
+
+[node name="Workstation1" parent="." instance=ExtResource("2_iywne")]
+position = Vector2(-350, 0)
+
+[node name="Workstation2" parent="." instance=ExtResource("2_iywne")]
+position = Vector2(350, 0)
+
+[node name="Animal1" parent="." instance=ExtResource("3_p57ef")]
+position = Vector2(0, -150)
+
+[node name="Animal2" parent="." instance=ExtResource("3_p57ef")]
+position = Vector2(0, 150)
+
+[node name="Sidenav" parent="." instance=ExtResource("4_u5sy4")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

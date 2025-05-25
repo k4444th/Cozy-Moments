@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb3bmjrjn8edy"
-path="res://.godot/imported/cozyMomentsIcon.png-f50aa5768026f5e440d3f0eef49d4cc3.ctex"
+uid="uid://vcvfdawe133s"
+path="res://.godot/imported/ressources.png-c61a3c5cf1551f5a3b035404f5ba528e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mock/general/cozyMomentsIcon.png"
-dest_files=["res://.godot/imported/cozyMomentsIcon.png-f50aa5768026f5e440d3f0eef49d4cc3.ctex"]
+source_file="res://assets/mock/general/ressources.png"
+dest_files=["res://.godot/imported/ressources.png-c61a3c5cf1551f5a3b035404f5ba528e.ctex"]
 
 [params]
 

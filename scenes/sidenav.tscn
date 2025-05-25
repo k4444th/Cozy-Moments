@@ -14,6 +14,8 @@ script = ExtResource("1_7wmdc")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 250.0
+offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -36,6 +38,9 @@ offset_bottom = 1039.0
 scale = Vector2(0.05, 0.05)
 texture_normal = ExtResource("1_64cow")
 stretch_mode = 0
+
+[node name="Ressources" type="Node2D" parent="Everything"]
+position = Vector2(275, 559)
 
 [connection signal="pressed" from="Everything/CalendarButton" to="." method="_on_calendar_button_pressed"]
 [connection signal="pressed" from="Everything/ArrowButton" to="." method="_on_arrow_button_pressed"]
