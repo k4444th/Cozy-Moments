@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://djs2hwhjna0rj"]
+[gd_scene load_steps=3 format=3 uid="uid://rht4ljmcg6oe"]
 
-[ext_resource type="Texture2D" uid="uid://dhe4wp0y1ibgf" path="res://assets/mock/gameboard/workspace.png" id="1_f6vdx"]
+[ext_resource type="Texture2D" uid="uid://tg3gt1t7w3n4" path="res://assets/mock/gameboard/teahouse.png" id="1_3vydf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqqjh"]
 size = Vector2(256, 256)
 
-[node name="Workstation" type="Area2D"]
+[node name="Teahouse" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_f6vdx")
+texture = ExtResource("1_3vydf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iqqjh")

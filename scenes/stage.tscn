@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhwaq8s277bh0"]
+
+[ext_resource type="Texture2D" uid="uid://byuxvro35hlg8" path="res://assets/mock/gameboard/stage.png" id="1_8rem4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqqjh"]
+size = Vector2(256, 256)
+
+[node name="Stage" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8rem4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iqqjh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

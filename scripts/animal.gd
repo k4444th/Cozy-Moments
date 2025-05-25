@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 		global_position = overlapCoords
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.name.contains("Workstation"):
+	if area.get_parent().name == "Workstation":
 		overlap = true
 		overlapCoords = area.global_position
 

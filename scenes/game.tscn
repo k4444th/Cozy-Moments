@@ -1,20 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://xekont1h321d"]
+[gd_scene load_steps=10 format=3 uid="uid://xekont1h321d"]
 
 [ext_resource type="PackedScene" uid="uid://dw5mmhbqsshlo" path="res://scenes/background.tscn" id="1_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstation.tscn" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workbench.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://c3hgi4ocjchiv" path="res://scenes/berryforest.tscn" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dsogyisvl8hag" path="res://scenes/sidenav.tscn" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cm1hvnauo3rq8" path="res://scenes/pond.tscn" id="5_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dhwaq8s277bh0" path="res://scenes/stage.tscn" id="6_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://rht4ljmcg6oe" path="res://scenes/teahouse.tscn" id="7_dinhu"]
+[ext_resource type="PackedScene" uid="uid://dowel2l5bkpkt" path="res://scenes/wood.tscn" id="8_kvuet"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(-2, 0)
 
 [node name="Background" parent="." instance=ExtResource("1_lbhrr")]
 
-[node name="Workstation1" parent="." instance=ExtResource("2_iywne")]
-position = Vector2(-350, 0)
+[node name="Workstation" type="Node2D" parent="."]
 
-[node name="Workstation2" parent="." instance=ExtResource("2_iywne")]
-position = Vector2(350, 0)
+[node name="Berryforest" parent="Workstation" instance=ExtResource("4_0tnpc")]
+position = Vector2(-350, -150)
+
+[node name="Pond" parent="Workstation" instance=ExtResource("5_vtaks")]
+position = Vector2(0, -150)
+
+[node name="Stage" parent="Workstation" instance=ExtResource("6_kvpfn")]
+position = Vector2(-350, 150)
+
+[node name="Teahouse" parent="Workstation" instance=ExtResource("7_dinhu")]
+position = Vector2(350, -150)
+
+[node name="Wood" parent="Workstation" instance=ExtResource("8_kvuet")]
+position = Vector2(0, 150)
+
+[node name="Workbench" parent="Workstation" instance=ExtResource("2_iywne")]
+position = Vector2(350, 150)
 
 [node name="Animal1" parent="." instance=ExtResource("3_p57ef")]
 position = Vector2(0, -150)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://djs2hwhjna0rj"]
+
+[ext_resource type="Texture2D" uid="uid://cf285f6byovlt" path="res://assets/mock/gameboard/workbench.png" id="1_4ij56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqqjh"]
+size = Vector2(256, 256)
+
+[node name="Workbench" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4ij56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iqqjh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

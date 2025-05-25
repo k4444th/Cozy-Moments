@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var sidenavOpen := false
+var sidenavOpen := true
 var buttonMargin := 15.0
 var sidenavWidth := 250.0
 var sidenavContentWidth := 200
