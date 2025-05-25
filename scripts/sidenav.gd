@@ -5,21 +5,36 @@ var buttonMargin := 15.0
 var sidenavWidth := 250.0
 var sidenavContentWidth := 200
 var openSidenavSpeed := 0.35
-var availableRessources = 0
+var availableRessources := 0
+var monthTextures = [
+	preload("res://assets/mock/sidenav/Calendar/CalendarJan.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarFeb.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarMar.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarApr.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarMay.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarJun.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarJul.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarAug.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarSep.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarOct.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarNov.png"),
+	preload("res://assets/mock/sidenav/Calendar/CalendarDec.png")
+]
 
-@onready var camera = $"../Camera2D"
-@onready var everything = $Everything
-@onready var sidenav = $Everything/Sidenav
-@onready var arrowButton = $Everything/ArrowButton
-@onready var calendar = $Everything/CalendarButton
-@onready var ressources = $Everything/Ressources
+@onready var camera := $"../Camera2D"
+@onready var everything := $Everything
+@onready var sidenav := $Everything/Sidenav
+@onready var arrowButton := $Everything/ArrowButton
+@onready var calendar := $Everything/CalendarButton
+@onready var ressources := $Everything/Ressources
 
-@onready var ressourceScene : = preload("res://scenes/ressource.tscn")
+@onready var ressourceScene := preload("res://scenes/ressource.tscn")
 
 func _ready() -> void:
 	get_viewport().size_changed.connect(resize)
 	initSizes()
 	initPositions()
+	initTextures()
 	initRessources()
 
 func initSizes():
@@ -39,6 +54,9 @@ func initPositions():
 		camera.position.x = 0
 		everything.position.x = -sidenavWidth
 
+func initTextures():
+	calendar.texture_normal = monthTextures[Gamemanager.currentRound["round"]]
+
 func initRessources():
 	for ressource in Gamemanager.ressources:
 		if Gamemanager.currentRound[ressource] > 0:
@@ -53,7 +71,10 @@ func addRessourceToGUI(ressource: String, index: int):
 
 func resize():
 	initSizes()
-	
+
+func updateCalendarButton():
+	calendar.texture_normal = monthTextures[Gamemanager.currentRound["round"]]
+
 func _on_arrow_button_pressed() -> void:
 	sidenavOpen = !sidenavOpen
 	arrowButton.flip_h = !sidenavOpen
@@ -69,4 +90,8 @@ func _on_arrow_button_pressed() -> void:
 		everythingTween.tween_property(everything, "position:x", -sidenavWidth, openSidenavSpeed)
 
 func _on_calendar_button_pressed() -> void:
-	print("Next Round")
+	Gamemanager.nextRound()
+	if Gamemanager.currentRound["round"] < 12:
+		updateCalendarButton()
+	else:
+		print("Game over!")
