@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhwttnjxk2scr"]
+
+[ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="1_1vvdc"]
+[ext_resource type="Texture2D" uid="uid://cp5v7yadgwvke" path="res://assets/mock/animals/raccoon.png" id="2_g5eh0"]
+
+[node name="Animal" instance=ExtResource("1_1vvdc")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_g5eh0")

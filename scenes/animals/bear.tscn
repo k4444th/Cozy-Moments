@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1qrljpqg5o2u"]
+
+[ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="1_g3v3q"]
+[ext_resource type="Texture2D" uid="uid://v5vrocmt4h1c" path="res://assets/mock/animals/bear.png" id="2_52iks"]
+
+[node name="Animal" instance=ExtResource("1_g3v3q")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_52iks")

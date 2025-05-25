@@ -58,7 +58,7 @@ func initTextures():
 	calendar.texture_normal = monthTextures[Gamemanager.currentRound["round"]]
 
 func initRessources():
-	for ressource in Gamemanager.ressources:
+	for ressource in Gamemanager.ressourceList:
 		if Gamemanager.currentRound[ressource] > 0:
 			addRessourceToGUI(ressource, availableRessources)
 			availableRessources += 1

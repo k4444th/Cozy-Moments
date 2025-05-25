@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1mchmx8q84ha"]
+
+[ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="1_4gns1"]
+[ext_resource type="Texture2D" uid="uid://dkny8kfqm8ma4" path="res://assets/mock/animals/bird.png" id="2_jm7yf"]
+
+[node name="Animal" instance=ExtResource("1_4gns1")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jm7yf")

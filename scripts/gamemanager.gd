@@ -1,9 +1,14 @@
 extends Node
 
+signal round_started()
+
 const SAVE_FILE_PATH := "user://cozymoments.json"
-const ressources := ["berries", "wood", "tea"]
-const animalList := ["Mouse", "Hedgehog", "Frog", "Bird", "Fox", "Rabbit", "Bear", "Raccoon"]
+const ressourceList := ["berries", "wood", "tea"]
+const animalList := ["Bear", "Bird", "Fox", "Frog", "Hedgehog", "Mouse", "Rabbit", "Raccoon"]
+const workstationList := ["Berryforest", "Pond", "Stage", "Teahouse", "Wood", "Workbench"]
 const newAnimalsPerRound := 3
+
+@onready var game = $"."
 
 var currentRound := {
 	"round": 0,
@@ -51,13 +56,19 @@ func resetGame():
 	currentRound["wood"] = 0
 	currentRound["tea"] = 0
 	currentRound["availableAnimals"] = []
+	spawnNewAnimals()
 	saveGame()
 
 func nextRound():
 	currentRound["round"] += 1
 	spawnNewAnimals()
 	saveGame()
+	emit_signal("round_started")
 
 func spawnNewAnimals():
 	for newAnimal in range(newAnimalsPerRound):
-		currentRound["availableAnimals"].append(animalList[randi_range(0, len(animalList) - 1)])
+		currentRound["availableAnimals"].append({
+			"name": animalList[randi_range(0, len(animalList) - 1)],
+			"state": "new",
+			"position": Vector2(0.0, 0.0)
+		})
