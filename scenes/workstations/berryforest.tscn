@@ -1,18 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3hgi4ocjchiv"]
 
+[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstation.tscn" id="1_1gc3e"]
 [ext_resource type="Texture2D" uid="uid://ba5wdb4eiqxqo" path="res://assets/mock/gameboard/berryforest.png" id="1_nxc7p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqqjh"]
-size = Vector2(256, 256)
+[node name="Berryforest" instance=ExtResource("1_1gc3e")]
 
-[node name="Berryforest" type="Area2D"]
-scale = Vector2(0.5, 0.5)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_nxc7p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_iqqjh")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]

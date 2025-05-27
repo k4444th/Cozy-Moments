@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwvqygi68hbc3"]
+
+[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstation.tscn" id="1_mmrcp"]
+[ext_resource type="Texture2D" uid="uid://cf285f6byovlt" path="res://assets/mock/gameboard/workbench.png" id="2_bdaxt"]
+
+[node name="Workbench" instance=ExtResource("1_mmrcp")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_bdaxt")

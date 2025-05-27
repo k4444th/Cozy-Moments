@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b3qoisbhor0dm" path="res://scripts/game.gd" id="1_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dw5mmhbqsshlo" path="res://scenes/background.tscn" id="1_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstations/workbench.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://c3hgi4ocjchiv" path="res://scenes/workstations/berryforest.tscn" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dsogyisvl8hag" path="res://scenes/sidenav.tscn" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://cm1hvnauo3rq8" path="res://scenes/workstations/pond.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dhwaq8s277bh0" path="res://scenes/workstations/stage.tscn" id="6_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://rht4ljmcg6oe" path="res://scenes/workstations/teahouse.tscn" id="7_dinhu"]
+[ext_resource type="PackedScene" uid="uid://bwvqygi68hbc3" path="res://scenes/workstations/worbench.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dowel2l5bkpkt" path="res://scenes/workstations/wood.tscn" id="8_kvuet"]
 
 [node name="Game" type="Node2D"]
@@ -25,16 +25,16 @@ position = Vector2(-350, 0)
 position = Vector2(-150, -200)
 
 [node name="Stage" parent="Workstation" instance=ExtResource("6_kvpfn")]
-position = Vector2(-150, 200)
+position = Vector2(150, -200)
 
 [node name="Teahouse" parent="Workstation" instance=ExtResource("7_dinhu")]
-position = Vector2(150, -200)
+position = Vector2(350, 0)
 
 [node name="Wood" parent="Workstation" instance=ExtResource("8_kvuet")]
 position = Vector2(150, 200)
 
-[node name="Workbench" parent="Workstation" instance=ExtResource("2_iywne")]
-position = Vector2(350, 0)
+[node name="Workbench" parent="Workstation" instance=ExtResource("8_0tnpc")]
+position = Vector2(-150, 200)
 
 [node name="Animals" type="Node2D" parent="."]
 

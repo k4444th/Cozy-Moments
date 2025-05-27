@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://djs2hwhjna0rj"]
 
-[ext_resource type="Texture2D" uid="uid://cf285f6byovlt" path="res://assets/mock/gameboard/workbench.png" id="1_4ij56"]
+[ext_resource type="Script" uid="uid://csdm8h3ff232f" path="res://scripts/workstation.gd" id="1_f6vdx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iqqjh"]
 size = Vector2(256, 256)
 
-[node name="Workbench" type="Area2D"]
+[node name="Workstation" type="Area2D"]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_f6vdx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4ij56")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iqqjh")

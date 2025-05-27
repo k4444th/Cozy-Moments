@@ -1,18 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dowel2l5bkpkt"]
 
+[ext_resource type="PackedScene" uid="uid://djs2hwhjna0rj" path="res://scenes/workstation.tscn" id="1_olg52"]
 [ext_resource type="Texture2D" uid="uid://c3ue8x3kjpxtk" path="res://assets/mock/gameboard/wood.png" id="1_y25wi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqqjh"]
-size = Vector2(256, 256)
+[node name="Wood" instance=ExtResource("1_olg52")]
 
-[node name="Wood" type="Area2D"]
-scale = Vector2(0.5, 0.5)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_y25wi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_iqqjh")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
