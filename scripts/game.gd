@@ -15,7 +15,7 @@ extends Node2D
 ]
 
 func _ready() -> void:
-	Gamemanager.connect("roundStarted", Callable(self, "distributeAnimalsInWorkstation"))
+	Gamemanager.connect("roundStarted", Callable(self, "showAnimals"))
 	Gamemanager.connect("snapAnimalPositions", Callable(self, "distributeAnimalsInWorkstation"))
 	Gamemanager.startGame()
 	showAnimals()
