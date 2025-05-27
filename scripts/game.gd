@@ -29,7 +29,6 @@ func showAnimals():
 		animalContainer.add_child(animalNode)
 
 func updateWorkstationHostAnimals(animalIndex: int):
-	print(animalIndex)
 	var workstations = workstationContainer.get_children()
 	for workstation in workstations:
 		if workstation.hostAnimals.find(animalIndex) >= 0:
@@ -40,12 +39,21 @@ func updateWorkstationHostAnimals(animalIndex: int):
 func distributeAnimals():
 	var workstations = workstationContainer.get_children()
 	for workstation in workstations:
-		var animalCount = len(workstation.hostAnimals)
-		for animalIndex in workstation.hostAnimals:
+		var host_animals = workstation.hostAnimals
+		var animalCount = host_animals.size()
+
+		for i in range(animalCount):
+			var animalIndex = host_animals[i]
 			if animalCount > 1:
-				Gamemanager.currentRound["availableAnimals"][animalIndex].position = workstation.global_position + Vector2(Gamemanager.animalDistributionLength * sin(deg_to_rad(animalIndex * 360.0 / animalCount)), Gamemanager.animalDistributionLength * cos(deg_to_rad(animalIndex * 360.0 / animalCount)))
-			elif animalCount == 1:
+				var angle = deg_to_rad(i * 360.0 / animalCount)
+				var offset = Vector2(
+					Gamemanager.animalDistributionLength * sin(angle),
+					Gamemanager.animalDistributionLength * cos(angle)
+				)
+				Gamemanager.currentRound["availableAnimals"][animalIndex].position = workstation.global_position + offset
+			else:
 				Gamemanager.currentRound["availableAnimals"][animalIndex].position = workstation.global_position
+
 	Gamemanager.positionAnimals()
 
 func distributeAnimalsInWorkstation(animalIndex: int):
