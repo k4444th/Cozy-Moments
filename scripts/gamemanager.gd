@@ -1,6 +1,8 @@
 extends Node
 
-signal round_started()
+signal roundStarted()
+signal positionAnimal()
+signal snapAnimalPositions(animalIndex)
 
 const SAVE_FILE_PATH := "user://cozymoments.json"
 const ressourceList := ["berries", "wood", "tea"]
@@ -8,9 +10,7 @@ const animalList := ["Bear", "Bird", "Fox", "Frog", "Hedgehog", "Mouse", "Rabbit
 const workstationList := ["Berryforest", "Pond", "Stage", "Teahouse", "Wood", "Workbench"]
 const newAnimalsPerRound := 3
 
-var animalDistributionLength = 60
-
-@onready var animalScene := preload("res://scenes/animal.tscn")
+var animalDistributionLength = 55
 
 var currentRound := {
 	"round": 0,
@@ -68,7 +68,7 @@ func nextRound():
 	currentRound["round"] += 1
 	spawnNewAnimals()
 	saveGame()
-	emit_signal("round_started")
+	emit_signal("roundStarted")
 
 func spawnNewAnimals():
 	for newAnimalIndex in range(newAnimalsPerRound):
@@ -78,3 +78,10 @@ func spawnNewAnimals():
 			"index": len(currentRound["availableAnimals"]),
 			"position": Vector2(animalDistributionLength * sin(deg_to_rad(newAnimalIndex * 360.0 / newAnimalsPerRound)), animalDistributionLength * cos(deg_to_rad(newAnimalIndex * 360.0 / newAnimalsPerRound)))
 		})
+
+func distributeAnimalsInWorkstation(animalIndex: int):
+	emit_signal("snapAnimalPositions", animalIndex)
+
+func positionAnimals():
+	emit_signal("positionAnimal")
+	

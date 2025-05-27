@@ -1,7 +1,5 @@
 extends Area2D
 
-signal snapped_animal_position()
-
 var mouseOver := false
 var dragging := false
 var overlap := false
@@ -11,7 +9,7 @@ var overlapCoords: Vector2
 @export var animalIndex: int
 
 func _ready() -> void:
-	pass	
+	Gamemanager.connect("positionAnimal", Callable(self, "positionSelf"))
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -22,12 +20,11 @@ func _input(event):
 				dragging = false
 				if overlap:
 					global_position = overlapCoords
-					Gamemanager.currentRound["availableAnimals"][animalIndex].position = global_position
-				emit_signal("snapped_animal_position")
-	
+				Gamemanager.currentRound["availableAnimals"][animalIndex].position = global_position
+				Gamemanager.distributeAnimalsInWorkstation(animalIndex)
+
 	if event is InputEventMouseMotion and dragging:
 		global_position += event.relative
-		Gamemanager.currentRound["availableAnimals"][animalIndex].position = global_position
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "Workstation":
@@ -43,3 +40,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	mouseOver = false
+
+func positionSelf():
+	global_position = Gamemanager.currentRound["availableAnimals"][animalIndex].position

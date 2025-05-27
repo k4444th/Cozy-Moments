@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var animalContainer = $Animals
+@onready var workstationContainer = $Workstation
 
 @onready var animalScenes := [
 	preload("res://scenes/animals/bear.tscn"),
@@ -14,7 +15,8 @@ extends Node2D
 ]
 
 func _ready() -> void:
-	Gamemanager.connect("round_started", Callable(self, "showAnimals"))
+	Gamemanager.connect("roundStarted", Callable(self, "distributeAnimalsInWorkstation"))
+	Gamemanager.connect("snapAnimalPositions", Callable(self, "distributeAnimalsInWorkstation"))
 	Gamemanager.startGame()
 	showAnimals()
 
@@ -25,3 +27,28 @@ func showAnimals():
 		animalNode.state = animal.state
 		animalNode.animalIndex = animal.index
 		animalContainer.add_child(animalNode)
+
+func updateWorkstationHostAnimals(animalIndex: int):
+	print(animalIndex)
+	var workstations = workstationContainer.get_children()
+	for workstation in workstations:
+		if workstation.hostAnimals.find(animalIndex) >= 0:
+			workstation.hostAnimals.pop_at(workstation.hostAnimals.find(animalIndex))
+		if workstation.global_position.distance_to(Gamemanager.currentRound["availableAnimals"][animalIndex].position) <= Gamemanager.animalDistributionLength:
+			workstation.hostAnimals.append(animalIndex)
+
+func distributeAnimals():
+	var workstations = workstationContainer.get_children()
+	for workstation in workstations:
+		var animalCount = len(workstation.hostAnimals)
+		for animalIndex in workstation.hostAnimals:
+			if animalCount > 1:
+				Gamemanager.currentRound["availableAnimals"][animalIndex].position = workstation.global_position + Vector2(Gamemanager.animalDistributionLength * sin(deg_to_rad(animalIndex * 360.0 / animalCount)), Gamemanager.animalDistributionLength * cos(deg_to_rad(animalIndex * 360.0 / animalCount)))
+			elif animalCount == 1:
+				Gamemanager.currentRound["availableAnimals"][animalIndex].position = workstation.global_position
+	Gamemanager.positionAnimals()
+
+func distributeAnimalsInWorkstation(animalIndex: int):
+	updateWorkstationHostAnimals(animalIndex)
+	distributeAnimals()
+	
