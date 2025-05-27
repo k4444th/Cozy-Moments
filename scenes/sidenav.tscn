@@ -39,6 +39,9 @@ scale = Vector2(0.05, 0.05)
 texture_normal = ExtResource("1_64cow")
 stretch_mode = 0
 
+[node name="Animals" type="Node2D" parent="Everything"]
+position = Vector2(55, 290)
+
 [node name="Ressources" type="Node2D" parent="Everything"]
 position = Vector2(275, 559)
 

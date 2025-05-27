@@ -1,8 +1,11 @@
 extends Node
 
+signal gameStarted()
 signal roundStarted()
 signal positionAnimal()
+signal addNewAnimalToGame(animalIndex)
 signal snapAnimalPositions(animalIndex)
+signal addNewAnimalToSidenav(animalNode)
 
 const SAVE_FILE_PATH := "user://cozymoments.json"
 const ressourceList := ["berries", "wood", "tea"]
@@ -63,7 +66,8 @@ func resetGame():
 func startGame():
 	resetGame()
 	spawnNewAnimals()
-
+	emit_signal("gameStarted")
+	
 func nextRound():
 	currentRound["round"] += 1
 	spawnNewAnimals()
@@ -76,7 +80,7 @@ func spawnNewAnimals():
 			"name": animalList[randi_range(0, len(animalList) - 1)],
 			"state": "new",
 			"index": len(currentRound["availableAnimals"]),
-			"position": Vector2(animalDistributionLength * sin(deg_to_rad(newAnimalIndex * 360.0 / newAnimalsPerRound)), animalDistributionLength * cos(deg_to_rad(newAnimalIndex * 360.0 / newAnimalsPerRound)))
+			"position": Vector2(0.0, 0.0)
 		})
 
 func distributeAnimalsInWorkstation(animalIndex: int):
@@ -85,3 +89,8 @@ func distributeAnimalsInWorkstation(animalIndex: int):
 func positionAnimals():
 	emit_signal("positionAnimal")
 	
+func addAnimalToSidenav(animalNode: Node2D):
+	emit_signal("addNewAnimalToSidenav", animalNode)
+
+func removeAnimalFromSidenav(animalIndex: int):
+	emit_signal("addNewAnimalToGame", animalIndex)

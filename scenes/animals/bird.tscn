@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uxbb6p5tunh" path="res://scenes/animal.tscn" id="1_4gns1"]
 [ext_resource type="Texture2D" uid="uid://dkny8kfqm8ma4" path="res://assets/mock/animals/bird.png" id="2_jm7yf"]
 
-[node name="Animal" instance=ExtResource("1_4gns1")]
-scale = Vector2(0.35, 0.35)
+[node name="Bird" instance=ExtResource("1_4gns1")]
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_jm7yf")

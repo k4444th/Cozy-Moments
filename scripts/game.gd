@@ -15,18 +15,32 @@ extends Node2D
 ]
 
 func _ready() -> void:
-	Gamemanager.connect("roundStarted", Callable(self, "showAnimals"))
+	Gamemanager.connect("gameStarted", Callable(self, "setup"))
+	Gamemanager.connect("roundStarted", Callable(self, "setup"))
+	Gamemanager.connect("addNewAnimalToGame", Callable(self, "addAnimalToGame"))
 	Gamemanager.connect("snapAnimalPositions", Callable(self, "distributeAnimalsInWorkstation"))
 	Gamemanager.startGame()
-	showAnimals()
 
-func showAnimals():
+func setup():
+	showAnimalsInSidenav()
+
+func showAnimalsInSidenav():
 	for animal in Gamemanager.currentRound["availableAnimals"]:
-		var animalNode = animalScenes[Gamemanager.animalList.find(animal.name)].instantiate()
-		animalNode.position = animal.position
-		animalNode.state = animal.state
-		animalNode.animalIndex = animal.index
-		animalContainer.add_child(animalNode)
+		if animal.state == "new":
+			var animalNode = animalScenes[Gamemanager.animalList.find(animal.name)].instantiate()
+			animalNode.state = animal.state
+			animalNode.animalIndex = animal.index
+			Gamemanager.addAnimalToSidenav(animalNode)
+
+func addAnimalToGame(animalIndex):
+	Gamemanager.currentRound["availableAnimals"][animalIndex].state = "inGame"
+	for animal in Gamemanager.currentRound["availableAnimals"]:
+		if animal.index == animalIndex:
+			var animalNode = animalScenes[Gamemanager.animalList.find(animal.name)].instantiate()
+			animalNode.position = animal.position
+			animalNode.state = animal.state
+			animalNode.animalIndex = animal.index
+			animalContainer.add_child(animalNode)
 
 func updateWorkstationHostAnimals(animalIndex: int):
 	var workstations = workstationContainer.get_children()
